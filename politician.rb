@@ -10,7 +10,9 @@ class Politician
     end
 
     def self.group
-        puts @@politicians.name
+        @@politicians.each do |politician|
+            puts "#{politician.name} is a #{politician.party}."
+        end
     end
 
 end
