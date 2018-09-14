@@ -21,7 +21,7 @@ class Politician
             if politician.name == name
                 puts "New Name?"
                 politician.name = gets.chomp
-                puts "party?"
+                puts "New Party?"
                 politician.party = gets.chomp
             end
         end
@@ -40,13 +40,3 @@ class Politician
     end
 
 end
-
-rob = Politician.new('Rob', 'Republican')
-dan = Politician.new('Dan', 'Democrat')
-
-puts "delete who?"
-
-name = gets.chomp.capitalize
-Politician.destroy(name)
-
-Politician.all

@@ -3,38 +3,27 @@ require './voters'
 
 class World
 
-    elections = [ 
-        
-    ]
-
-    loop do
-    
-
-puts "What would you like to do?\n ( C )reate, ( L )ist, ( U )pdate, ( D )elete, or exit"
-        choice = gets.chomp
+	loop do
+    puts "What would you like to do?\n ( C )reate, ( L )ist, ( U )pdate, ( D )elete, or exit"
+    choice = gets.chomp.downcase
 
     case choice   
-
-        when "C"
-
-            puts "What would you like to create?\n ( P )olitician or ( V )oter"
-                choice = gets.chomp
-
-            case choice
-                when "P"
-                        
-                        puts "Name?"
-                        @name = gets.chomp
-                        puts "Party?\n ( D )emocrat or ( R )epublican"
-                        @party = gets.chomp
-                    
-                            if @party == "D"
-                                @party = "Democrat"
-                            elsif @party == "R"
-                                @party = "Republican"
-                            else
-                                @party = "Unknown"
-                            end
+        when "c"
+          puts "What would you like to create?\n ( P )olitician or ( V )oter"
+            choice = gets.chomp.downcase
+            	case choice
+                when "p"
+                  puts "Name?"
+                  @name = gets.chomp
+                  puts "Party?\n ( D )emocrat or ( R )epublican"
+                	@party = gets.chomp
+										if @party == "D"
+												@party = "Democrat"
+										elsif @party == "R"
+												@party = "Republican"
+										else
+												@party = "Unknown"
+										end
                         
                         @Politician = Politician.new(@name, @party)
                         @Politician.create
