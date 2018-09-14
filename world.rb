@@ -9,45 +9,47 @@ class World
 
     case choice   
         when "c"
-          puts "What would you like to create?\n ( P )olitician or ( V )oter"
+        puts "What would you like to create?\n ( P )olitician or ( V )oter"
             choice = gets.chomp.downcase
-            	case choice
-                when "p"
-                  puts "Name?"
-                  @name = gets.chomp
-                  puts "Party?\n ( D )emocrat or ( R )epublican"
-                	@party = gets.chomp
-										if @party == "D"
-												@party = "Democrat"
-										elsif @party == "R"
-												@party = "Republican"
-										else
-												@party = "Unknown"
-										end
-                        
-                        @Politician = Politician.new(@name, @party)
-                        @Politician.create
-
-        #         when "V"
-        #             puts "Name?"
-        #             voter = gets.chomp
-        #             puts "Politics?\n ( L )iberal, ( C )onservative, ( T )ea Party, ( S )ocialist, or ( N )eutral"
-        #             politics = gets.chomp
-                    
-        #                 if politics == "L"
-        #                     politics = "Liberal"
-        #                 elsif politics == "C"
-        #                     politics = "Conservative"
-        #                 elsif politics == "T"
-        #                     politics = "Tea Party"
-        #                 elsif politics == "S"
-        #                     politics = "Socialist"
-        #                 elsif politics == "N"
-        #                     politics = "Neutral"
-        #                 else
-        #                     politics = "Undecided"
-        #             end     
-            end
+            case choice
+              when "p"
+              puts "Name?"
+              name = gets.chomp.downcase
+              @name = name.capitalize
+              puts "Party?\n ( D )emocrat or ( R )epublican"
+              @party = gets.chomp.downcase
+                if @party == "d"
+                  @party = "Democrat"
+                elsif @party == "r"
+                  @party = "Republican"
+                else
+                  @party = "Unknown"
+                end
+              
+                new_politician = Politician.new(@name, @party)
+              puts "Successfully created a #{new_politician.party} named #{new_politician.name}!"
+        
+              when "v"
+                puts "Name?"
+                @name = gets.chomp.capitalize
+                puts "Politics?\n ( L )iberal, ( C )onservative, ( T )ea Party, ( S )ocialist, or ( N )eutral"
+                politics = gets.chomp.downcase
+                  if politics == "l"
+                    @politics = "Liberal"
+                  elsif politics == "c"
+                    @politics = "Conservative"
+                  elsif politics == "t"
+                    @politics = "Tea Party"
+                  elsif politics == "s"
+                    @politics = "Socialist"
+                  elsif politics == "n"
+                    @politics = "Neutral"
+                  else
+                    @politics = "Undecided"
+                end 
+                new_voter = Voter.new(@name, @politics)
+                puts "Successfully created #{new_voter.name} registered as a #{new_voter.politics}!"
+              end
 
         #     if "P"
         #         Politician.new()
