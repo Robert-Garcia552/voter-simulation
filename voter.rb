@@ -20,9 +20,22 @@ class Voter
         @@voters.each do |voter|
             if voter.name == name
                 puts "New Name?"
-                voter.name = gets.chomp
-                puts "New Politics?"
-                voter.politics = gets.chomp
+                voter.name = gets.chomp.downcase.capitalize
+                puts "New Politics ( L )iberal, ( C )onservative, ( T )ea Party, ( S )ocialist, or ( N )eutral?"
+                politics = gets.chomp.downcase
+                if politics == "l"
+                    voter.politics = "Liberal"
+                  elsif politics == "c"
+                    voter.politics = "Conservative"
+                  elsif politics == "t"
+                    voter.politics = "Tea Party"
+                  elsif politics == "s"
+                    voter.politics = "Socialist"
+                  elsif politics == "n"
+                    voter.politics = "Neutral"
+                  else
+                    voter.politics = "Undecided"
+                  end 
             end
         end
     end
@@ -32,11 +45,12 @@ class Voter
             if voter.name == name
                 puts "Are you sure you want to delete #{voter.name}, ( Y )es or ( N )o?"
                 choice = gets.chomp.downcase
-                if choice == 'y'
+                if choice == "y"
                     @@voters.delete(voter)
                 end
             end
         end
+        puts "Successfully deleted voter!"
     end
 
 end

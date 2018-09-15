@@ -20,10 +20,18 @@ class Politician
         @@politicians.each do |politician|
             if politician.name == name
                 puts "New Name?"
-                politician.name = gets.chomp
-                puts "New Party?"
-                politician.party = gets.chomp
+                politician.name = gets.chomp.downcase.capitalize
+                puts "New Party ( R )epublican or ( D )emocrat?"
+                party = gets.chomp.downcase
+                if party == "r"
+                    politician.party = "Republican"
+                elsif party == "d"
+                    politician.party = "Democrat"
+                else
+                    politician.party = "Independent"
+                end
             end
+        puts "Successfully updated #{politician.name}!"
         end
     end
 
@@ -32,8 +40,9 @@ class Politician
             if politician.name == name
                 puts "Are you sure you want to delete #{politician.name}, ( Y )es or ( N )o?"
                 choice = gets.chomp.downcase
-                if choice == 'y'
+                if choice == "y"
                     @@politicians.delete(politician)
+                    puts "Successfully deleted politician!"
                 end
             end
         end
