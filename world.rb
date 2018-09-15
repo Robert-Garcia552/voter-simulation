@@ -4,7 +4,7 @@ require './voter'
 class World
 
 	loop do
-    puts "What would you like to do?\n ( C )reate, ( L )ist, ( U )pdate, ( D )elete, or exit"
+    puts "What would you like to do?\n ( C )reate, ( L )ist, ( U )pdate, ( D )elete, or ( E )xit"
     choice = gets.chomp.downcase
 
     case choice   
@@ -66,19 +66,20 @@ class World
         when "d"
           puts "Would you like to delete ( V )oter or ( P )olitician?"
           choice = gets.chomp.downcase
-            if choice == "v"
+          case choice        
+            when "v"
               puts "Which voter would you like to delete?"
               name = gets.chomp.downcase.capitalize
               Voter.destroy(name)
-            elsif choice == "p"
+            when "p"
               puts "Which politician would you like to delete?"
               name = gets.chomp.downcase.capitalize
               Politician.destroy(name)
-            end
-          
-          
-        
-        
+          end
+        when "e"
+          break
+        when "q"
+          break
       end
     end
 end
